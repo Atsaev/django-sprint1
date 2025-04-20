@@ -6,10 +6,10 @@ def index(request):
     ##context = {'ice_cream': ice_cream_catalog[pk]}
     return render(request, template)
 
-def detail(request):
+def post_detail(request, id):
     template = 'blog/detail.html'
     return render(request, template)
 
-def category(request):
-    template = 'blog/categroy.html'
+def category_post(request, category_slug):
+    template = 'blog/category.html'
     return render(request, template)
