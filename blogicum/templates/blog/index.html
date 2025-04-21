@@ -1,19 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Блогикум -  Публикации</title>
-</head>
-<body>
-  {% for post in posts_list %}
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  Лента записей
+{% endblock %}
+{% block content%}
+<h1>{% block header  %}Лента записей{% endblock %}</h1>
+  {% for post in posts_list reversed %}
   <article>
-    <h2>{{ post.date }} — {{ post.location }}</h2>
-    <p>{{ post.text|truncatewords:10 }}</p>
-    </article>
-  <hr>
+    <ul>
+      <li>
+        Место: {{ post.location }}             
+      </li>
+      <li>
+        Дата: {{ post.date }}
+      </li>
+      <li>
+        Категория: <a href="{% url 'blog:detail' post.id %}"> {{ post.category }} </a>
+      </li>
+    </ul>          
+    <p>
+      {{ post.text|truncatewords:10 }}
+    </p>
+    <a href="detail.html">Читать полный текст</a>
+  </article>
+  {% if not forloop.last %}
+  <hr> 
+  {% endif %}
   {% empty %}
     <p>Пока нет записей.</p>
   {% endfor %}
-</body>
-</html>
+{% endblock %}
+
