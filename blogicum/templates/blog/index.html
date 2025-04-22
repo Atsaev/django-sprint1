@@ -15,13 +15,13 @@
         Дата: {{ post.date }}
       </li>
       <li>
-        Категория: <a href="{% url 'blog:detail' post.id %}"> {{ post.category }} </a>
+        Категория: <a href="{% url 'blog:category' post.category %}"> {{ post.category }} </a>
       </li>
     </ul>          
     <p>
       {{ post.text|truncatewords:10 }}
     </p>
-    <a href="detail.html">Читать полный текст</a>
+    <a href="{% url 'blog:detail' post.id %}">Читать полный текст</a>
   </article>
   {% if not forloop.last %}
   <hr> 
