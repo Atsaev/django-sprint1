@@ -42,7 +42,7 @@ posts = [
                 укутывал их, чтобы не испортились от дождя.''',
     },
 ]
- 
+
 
 # Create your views here.
 def index(request):
@@ -59,7 +59,7 @@ def category_post(request, category_slug):
     template = 'blog/category.html'
     filtered_posts = [post for post in posts if post['category'] == category_slug]
     context = {
-        'category': category_slug,
         'posts': filtered_posts,
+        'category': category_slug
     }
     return render(request, template, context)
