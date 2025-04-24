@@ -1,19 +1,11 @@
 {% extends "base.html" %}
-{% load static %}
 {% block title %}
   Лента записей
 {% endblock %}
 {% block content%}
 <h1>{% block header  %}Лента записей{% endblock %}</h1>
   {% for post in posts_list reversed %}
-  <article>
-    <ul>
-      <li>
-        Место: {{ post.location }}             
-      </li>
-      <li>
-        Дата: {{ post.date }}
-      </li>
+  {% include 'includes/article.html' %}
       <li>
         Категория: <a href="{% url 'blog:category_posts' post.category %}"> {{ post.category }} </a>
       </li>
