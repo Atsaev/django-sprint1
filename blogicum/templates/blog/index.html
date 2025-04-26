@@ -5,7 +5,9 @@
 {% block content%}
 <h1>{% block header  %}Лента записей{% endblock %}</h1>
   {% for post in posts_list reversed %}
-  {% include "includes/article.html" %}
+  {% with truncate=True %}
+    {% include "includes/article.html" %}
+  {% endwith %}
   {% if not forloop.last %}
   <hr> 
   {% endif %}

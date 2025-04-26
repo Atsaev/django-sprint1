@@ -3,8 +3,7 @@
   {{post.location}}.{{post.date}}
 {% endblock %}
 {% block content %}
-<article>
-  {% include "includes/post_meta.html" %}
-  <p>{{ post.text|linebreaks}}</p>
-</article>
+{% with truncate=False %}
+  {% include "includes/article.html" %}
+{% endwith %}
 {% endblock %}
