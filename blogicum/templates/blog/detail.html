@@ -3,11 +3,8 @@
   {{post.location}}.{{post.date}}
 {% endblock %}
 {% block content %}
-{% include 'includes/article.html' %}
-    <li>
-      Категория: <a href="{% url 'blog:category_posts' post.category %}"> {{ post.category }} </a>
-    </li>
-  </ul>
+<article>
+  {% include "includes/post_meta.html" %}
   <p>{{ post.text|linebreaks}}</p>
 </article>
 {% endblock %}
